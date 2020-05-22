@@ -12,7 +12,7 @@ export default function (app: Application) {
     if (!exists) {
       db.schema
         .createTable(tableName, (table) => {
-          table.increments("id");
+          table.increments("id").primary();
           table.string("fullname").notNullable();
           table.date("birth_date").notNullable();
           table.string("address");

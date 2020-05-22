@@ -1,4 +1,4 @@
-// orders-model.js - A KnexJS
+// order-details-model.js - A KnexJS
 //
 // See http://knexjs.org/
 // for more of what you can do here.
@@ -7,19 +7,19 @@ import { Application } from "../declarations";
 
 export default function (app: Application) {
   const db: Knex = app.get("knexClient");
-  const tableName = "orders";
+  const tableName = "order_details";
   db.schema.hasTable(tableName).then((exists) => {
     if (!exists) {
       db.schema
         .createTable(tableName, (table) => {
           table.increments("id").primary();
           table
-            .integer("customer_id")
+            .integer("product_id")
             .references("id")
-            .inTable("customers")
+            .inTable("products")
             .notNullable()
             .onDelete("cascade");
-          table.string("customer_type");
+          table.decimal("price", 8, 2);
         })
         .then(() => console.log(`Created ${tableName} table`))
         .catch((e) => console.error(`Error creating ${tableName} table`, e));

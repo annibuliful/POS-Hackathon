@@ -12,7 +12,7 @@ export default function (app: Application) {
     if (!exists) {
       db.schema
         .createTable(tableName, (table) => {
-          table.increments("id");
+          table.increments("id").primary();
           table.string("name");
           table.specificType("images", "TEXT[]");
           table.decimal("price", 8, 2);

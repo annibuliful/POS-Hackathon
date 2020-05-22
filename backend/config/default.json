@@ -1,0 +1,32 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "entity": "user",
+    "service": "users",
+    "secret": "uci0WvdPlgxTBxWLMKjVNWr9wWI=",
+    "authStrategies": ["jwt", "local"],
+    "jwtOptions": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "usernameField": "email",
+      "passwordField": "password"
+    }
+  },
+  "postgres": {
+    "client": "pg",
+    "connection": "postgres://rirepzulchkheu:d3518aabec9aabe740867258ced5707a4e7d8ea8f80197b1615d8f648f38917c@ec2-174-129-255-106.compute-1.amazonaws.com:5432/dca2hc1tdeurq5?ssl=true"
+  }
+}
